@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication2.Controllers;
 
@@ -62,20 +63,25 @@ public class PostService : IPostService
     }
     public PostModel Create(PostModel postModel)
     {
-        var lastPost = _dataContext.Posts.LastOrDefault();
+        var posts = _dataContext.Posts.ToList();
+        var lastPost = posts?.OrderBy(x => x.Id).LastOrDefault();
         postModel.Id = lastPost is null ? 1 : lastPost.Id + 1;
-        _dataContext.Posts.Add(postModel);
+        posts?.Add(postModel);
+        _dataContext.Posts = posts;
         return postModel;
     }
     public PostModel Update(PostModel postModel)
     {
-        var rez = _dataContext.Posts.FindIndex(x => x.Id == postModel.Id);
-        _dataContext.Posts[rez] = postModel;
+        if (_dataContext.Posts.Count == 0) throw new Exception("Post not found");
+        var posts = _dataContext.Posts.ToList();
+        var rez = posts.FindIndex(x => x.Id == postModel.Id);
+        posts[rez] = postModel;
+        _dataContext.Posts = posts;
         return postModel;
     }
     public PostModel Get(int id)
     {
-        return _dataContext.Posts.FirstOrDefault(x => x.Id == id);
+        return _dataContext.Posts.FirstOrDefault(x => x.Id == id)!;
     }
     public IEnumerable<PostModel> GetAll()
     {
@@ -83,9 +89,11 @@ public class PostService : IPostService
     }
     public void Delete(int id)
     {
-        var model = _dataContext.Posts.FirstOrDefault(x => x.Id == id);
+        var posts = _dataContext.Posts.ToList();
+        var model = posts.FirstOrDefault(x => x.Id == id);
         if (model is null) throw new Exception("Post not found");
-        _dataContext.Posts.Remove(model);
+        posts!.Remove(model);
+        _dataContext.Posts = posts;
     }
 }
 
@@ -98,5 +106,25 @@ public class PostModel
 
 public class MyDataContext
 {
-    public List<PostModel> Posts { get; set; } = new List<PostModel>();
+    private const string _fileName = "posts.json";
+    public List<PostModel> Posts
+    {
+        get => Deserialize();
+        set => Serialize(value);
+    }
+    public MyDataContext()
+    {
+    }
+
+    private List<PostModel> Deserialize()
+    {
+        var jsonString = File.ReadAllText(_fileName);
+            return JsonSerializer.Deserialize<List<PostModel>>(jsonString) ?? new List<PostModel>();
+    }
+
+    private void Serialize(List<PostModel> newCollection)
+    {
+        var result = JsonSerializer.Serialize(newCollection);
+        File.WriteAllText(_fileName, result);
+    }
 }

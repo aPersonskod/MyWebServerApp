@@ -5,7 +5,6 @@ D:\prog\csharp\WebApplication2\WebApplication2\bin\Debug\net6.0\WebApplication2.
 D:\prog\csharp\WebApplication2\WebApplication2\bin\Debug\net6.0\WebApplication2.runtimeconfig.json
 D:\prog\csharp\WebApplication2\WebApplication2\bin\Debug\net6.0\WebApplication2.dll
 D:\prog\csharp\WebApplication2\WebApplication2\bin\Debug\net6.0\WebApplication2.pdb
-D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.csproj.AssemblyReference.cache
 D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.GeneratedMSBuildEditorConfig.editorconfig
 D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.AssemblyInfoInputs.cache
 D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.AssemblyInfo.cs
@@ -21,3 +20,9 @@ D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.
 D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\ref\WebApplication2.dll
 D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.RazorAssemblyInfo.cache
 D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.RazorAssemblyInfo.cs
+D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\staticwebassets\msbuild.WebApplication2.Microsoft.AspNetCore.StaticWebAssets.props
+D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\staticwebassets\msbuild.build.WebApplication2.props
+D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.WebApplication2.props
+D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.WebApplication2.props
+D:\prog\csharp\WebApplication2\WebApplication2\obj\Debug\net6.0\staticwebassets.pack.json
+D:\prog\csharp\WebApplication2\WebApplication2\bin\Debug\net6.0\posts.json
